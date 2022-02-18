@@ -19,10 +19,17 @@
   "author": "myq",
   "license": "ISC",
   "dependencies": {
-    "d3": "^7.3.0"
+    "d3": "^7.3.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
     "@types/d3": "^7.1.0",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
     "@webpack-cli/generators": "^2.4.2",
     "autoprefixer": "^10.4.2",
     "css-loader": "^6.6.0",
@@ -30,14 +37,19 @@
     "less": "^4.1.2",
     "less-loader": "^10.2.0",
     "postcss": "^8.4.6",
+    "postcss-import": "^14.0.2",
     "postcss-loader": "^6.2.1",
     "prettier": "^2.5.1",
     "style-loader": "^3.3.1",
+    "tailwindcss": "^3.0.23",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.5",
     "url-loader": "^4.1.1",
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
+  },
+  "repository": {
+    "url": "https://github.com/a2670392079/p-chart-build"
   }
 }

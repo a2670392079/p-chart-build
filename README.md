@@ -1,15 +1,6 @@
-# 🚀 Welcome to your new awesome project!
-
-This project has been created using **webpack-cli**, you can now run
-
+# why p? i don't know!
+## this is a low code chart build project(maybe).
+## dev
 ```
-npm run build
+yarn run dev
 ```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
