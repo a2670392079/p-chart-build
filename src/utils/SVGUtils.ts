@@ -1,11 +1,13 @@
-interface ElementConfig {
+import { curry } from "lodash-es";
+
+export interface ElementConfig {
   id: string;
   className?: string;
   width?: number;
   height?: number;
 }
 
-interface SVGConfig extends ElementConfig {
+export interface SVGConfig extends ElementConfig {
   version?: string;
 }
 
@@ -26,9 +28,11 @@ export const createSVG = ({
 };
 
 export const appendChild = (
-create: (arg: any) => Element,
+  create: (arg: any) => Element,
   ref: HTMLElement,
-  config: ElementConfig,
+  config: ElementConfig
 ) => {
   ref.appendChild(create(config));
 };
+
+export const appendSVG = curry(appendChild)(createSVG);

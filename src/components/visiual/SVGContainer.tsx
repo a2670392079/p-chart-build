@@ -12,7 +12,7 @@ const SVGContainer: React.ForwardRefRenderFunction<
     <div
       ref={ref}
       style={{ width: props.width }}
-      className=" overflow-auto bg-slate-300 flex flex-col mx-12 mt-12 min-h-screen"
+      className=" overflow-auto flex flex-col mx-12 mt-12 min-h-screen"
     >
         svg 容器
     </div>
