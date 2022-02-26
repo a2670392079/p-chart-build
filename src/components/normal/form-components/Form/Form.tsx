@@ -96,7 +96,7 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = (props) => {
   const { form: outForm, initValue = {} } = props;
-  const inForm = useForm(initValue);
+  const [inForm] = useForm(initValue);
 
   const form = useMemo(() => {
     if (outForm) {

@@ -1,11 +1,12 @@
 import React from "react";
+import { useMemo } from "react";
 
-export interface BasicProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface BasicProps extends React.HTMLAttributes<HTMLElement | HTMLLabelElement> {
   prefixCls?: string;
   classType?: string;
 }
 
-export type TagName = "button";
+export type TagName = "button" | "input" | "label";
 
 interface BasicPropsWithTagName extends BasicProps {
   tagName: TagName;
@@ -27,18 +28,28 @@ export const Basic = (props: BasicPropsWithTagName) => {
   );
 };
 
-export const generator = ({ suffixCls, displayName, tagName }: GeneratorProps) => {
+export const generator = (
+  { suffixCls, displayName, tagName }: GeneratorProps,
+  adapterProps?: (
+    props: BasicProps,
+    suffixCls: Record<string, string>
+  ) => string
+) => {
   return (BasicComponent: typeof Basic) => {
-    const Adapter: React.Factory<BasicProps> = (props) => {
+    const Adapter: React.Factory<BasicProps|any> = (props) => {
       const { classType } = props;
 
-      const prefixCls = suffixCls[classType] ?? suffixCls["default"] ?? "";
+      const prefixCls = () => {
+        if (typeof adapterProps === "function") {
+          return adapterProps(props, suffixCls);
+        }
+        return suffixCls[classType] ?? suffixCls["default"] ?? "";
+      };
       return (
-        <BasicComponent prefixCls={prefixCls} tagName={tagName} {...props} />
+        <BasicComponent prefixCls={prefixCls()} tagName={tagName} {...props} />
       );
     };
 
     return Adapter;
   };
 };
-
