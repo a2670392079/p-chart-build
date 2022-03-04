@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import "./style.css";
 
 interface SVGContainerProps {
   width: number;
@@ -9,13 +10,15 @@ const SVGContainer: React.ForwardRefRenderFunction<
   SVGContainerProps
 > = (props, ref) => {
   return (
-    <div
-      ref={ref}
-      style={{ width: props.width }}
-      className=" overflow-auto flex flex-col mx-12 mt-12 min-h-screen"
-    >
-        svg 容器
-    </div>
+    <>
+      <div
+        ref={ref}
+        style={{ width: props.width }}
+        className=" overflow-auto flex flex-col mx-12 svg-container min-h-full border-r-2 border-gray-300 pt-12 flex-grow"
+      >
+        <strong>svg container</strong>
+      </div>
+    </>
   );
 };
 

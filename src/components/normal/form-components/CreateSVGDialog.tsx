@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useCallback } from "react";
 import { Button, Input, Label } from "../base-components/BaseComponents";
 import { SVGConfig } from "../../../utils/SVGUtils";
 import Modal from "../base-components/Modal";
@@ -15,14 +15,27 @@ const CreateSVGDialog: React.FC<CreateSVGDialogProps> = (props) => {
   const [form] = Form.useForm();
 
   const [open, close] = useMemo(
-    () => [() => setShow(true), () => setShow(false)],
+    () => [
+      () => setShow(true),
+      () => {
+        setShow(false);
+        form.resetFields();
+      },
+    ],
     []
   );
+
+  const save = useCallback(() => {
+    form.validateFields().then((value) => {
+      onOk(value);
+      close();
+    });
+  }, []);
 
   return (
     <>
       <Button onClick={open}>create new SVG</Button>
-      <Modal title="create SVG" show={show} onClose={close}>
+      <Modal title="create SVG" show={show} onClose={close} onOk={save}>
         <Form form={form}>
           <Label htmlFor="id" classType="middle">
             id
@@ -34,14 +47,14 @@ const CreateSVGDialog: React.FC<CreateSVGDialogProps> = (props) => {
             <Label htmlFor="width" classType="middle">
               width
             </Label>
-            <Field name="width">
-              <Input type="number" placeholder="SVG element width(px)" />
+            <Field name={["styles","width"]}>
+              <Input type="number" placeholder="width(px)" />
             </Field>
             <Label htmlFor="id" classType="middle">
               height
             </Label>
-            <Field name="height">
-              <Input type="number" placeholder="SVG element height(px)" />
+            <Field name={["styles","height"]}>
+              <Input type="number" placeholder="height(px)" />
             </Field>
           </div>
         </Form>

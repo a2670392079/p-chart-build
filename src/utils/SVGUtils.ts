@@ -1,29 +1,34 @@
 import { curry } from "lodash-es";
+import * as d3 from 'd3';
 
 export interface ElementConfig {
   id: string;
   className?: string;
-  width?: number;
-  height?: number;
+  styles: CSSStyleDeclaration
 }
+
 
 export interface SVGConfig extends ElementConfig {
   version?: string;
 }
 
 export const createSVG = ({
-  width = 100,
-  height = 100,
+  styles: { width = '100', height = '100', ...rest },
   version = "1.1",
   className = "",
   id,
 }: SVGConfig) => {
   const element = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   element.setAttribute("id", id);
-  element.setAttribute("width", width.toString());
-  element.setAttribute("height", height.toString());
+  element.setAttribute("width", width);
+  element.setAttribute("height", height);
   element.setAttribute("version", version);
   element.setAttribute("class", className);
+
+  for(const key of Object.keys(rest)){
+    (element.style as any)[key] = (rest as any)[key];
+    console.log(element.style.borderColor)
+  }
   return element;
 };
 
@@ -36,3 +41,7 @@ export const appendChild = (
 };
 
 export const appendSVG = curry(appendChild)(createSVG);
+
+export const getRandomColor = () => {
+  return d3.scaleOrdinal().domain([]).range(d3.schemeCategory10)
+}

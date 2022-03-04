@@ -28,6 +28,7 @@ export const Basic = (props: BasicPropsWithTagName) => {
   );
 };
 
+
 export const generator = (
   { suffixCls, displayName, tagName }: GeneratorProps,
   adapterProps?: (
