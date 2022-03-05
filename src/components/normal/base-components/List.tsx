@@ -1,20 +1,20 @@
-import React, { Attributes, ReactNode, useCallback } from "react";
+import React, { ReactNode, useCallback } from "react";
 
 interface ListProps extends React.HTMLAttributes<HTMLDivElement> {
   data: Array<any>;
   renderItem: (item: any) => ReactNode;
-  key: string | ((item: any) => string);
+  uniKey: string | ((item: any) => string);
 }
 const List: React.FC<ListProps> = (props) => {
-  const { data, renderItem, key, ...rest } = props;
+  const { data, renderItem, uniKey, ...rest } = props;
   const getKey = useCallback(
     (item: any) => {
-      if (typeof key === "function") {
-        return key(item);
+      if (typeof uniKey === "function") {
+        return uniKey(item);
       }
-      return item[key];
+      return item[uniKey];
     },
-    [key]
+    [uniKey]
   );
   return (
     <div {...rest}>
@@ -24,3 +24,6 @@ const List: React.FC<ListProps> = (props) => {
     </div>
   );
 };
+
+
+export default List;

@@ -42,6 +42,8 @@ export const appendChild = (
 
 export const appendSVG = curry(appendChild)(createSVG);
 
+
+const colorScales = d3.scaleSequential(d3.interpolateWarm);
 export const getRandomColor = () => {
-  return d3.scaleOrdinal().domain([]).range(d3.schemeCategory10)
+  return colorScales(Math.random());
 }

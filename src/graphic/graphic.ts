@@ -10,7 +10,8 @@ export class Graphic {
       ...rest,
     };
 
-    // this.svgInfo.styles.borderColor = getRandomColor();
+    // 设置边框为随机颜色
+    this.svgInfo.styles.borderColor = getRandomColor();
 
     const container = getContainer();
     appendSVG(container, { id, ...this.svgInfo });

@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 export interface BasicProps extends React.HTMLAttributes<HTMLElement | HTMLLabelElement> {
   prefixCls?: string;
-  classType?: string;
+  classtype?: string;
 }
 
 export type TagName = "button" | "input" | "label";
@@ -38,13 +38,13 @@ export const generator = (
 ) => {
   return (BasicComponent: typeof Basic) => {
     const Adapter: React.Factory<BasicProps|any> = (props) => {
-      const { classType } = props;
+      const { classtype } = props;
 
       const prefixCls = () => {
         if (typeof adapterProps === "function") {
           return adapterProps(props, suffixCls);
         }
-        return suffixCls[classType] ?? suffixCls["default"] ?? "";
+        return suffixCls[classtype] ?? suffixCls["default"] ?? "";
       };
       return (
         <BasicComponent prefixCls={prefixCls()} tagName={tagName} {...props} />

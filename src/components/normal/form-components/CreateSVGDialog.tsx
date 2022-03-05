@@ -37,20 +37,20 @@ const CreateSVGDialog: React.FC<CreateSVGDialogProps> = (props) => {
       <Button onClick={open}>create new SVG</Button>
       <Modal title="create SVG" show={show} onClose={close} onOk={save}>
         <Form form={form}>
-          <Label htmlFor="id" classType="middle">
+          <Label htmlFor="id" classtype="middle">
             id
           </Label>
           <Field name="id">
             <Input placeholder="unique id" type="text" />
           </Field>
           <div className=" grid-cols-2">
-            <Label htmlFor="width" classType="middle">
+            <Label htmlFor="width" classtype="middle">
               width
             </Label>
             <Field name={["styles","width"]}>
               <Input type="number" placeholder="width(px)" />
             </Field>
-            <Label htmlFor="id" classType="middle">
+            <Label htmlFor="id" classtype="middle">
               height
             </Label>
             <Field name={["styles","height"]}>
