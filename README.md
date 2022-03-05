@@ -2,7 +2,7 @@
 ## this is a low code chart build project(maybe).
 ## dev
 ```
-yarn run server
+yarn run dev
 ```
 
 ## react + d3 + ts + tailwind

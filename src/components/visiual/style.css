@@ -1,5 +1,6 @@
 .svg-container svg{
-    border: 1px solid;
+    border: 2px solid;
     border-radius: 2px;
     border-color: rgb(252 231 243);
+    margin-top: 0.75rem;
 }

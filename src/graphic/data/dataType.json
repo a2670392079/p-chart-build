@@ -1,0 +1,35 @@
+{
+    "pie": {
+        "graphic": "饼图"
+    },
+    "forceSimulation": {
+        "graphic": "力向导图"
+    },
+    "chord": {
+        "graphic": "玄图"
+    },
+    "hierarchy": {
+        "graphic": "树状图"
+    },
+    "Cluster":{
+        "graphic":"集群"
+    },
+    "Treemap": {
+        "graphic":"矩阵树图"
+    },
+    "Partition":{
+        "graphic":"分区图"
+    },
+    "Pack":{
+        "graphic":"打包图"
+    },
+    "Bundle":{
+        "graphic":"捆图"
+    },
+    "Histogram":{
+        "graphic":"直方图"
+    },
+    "Stack":{
+        "graphic":"堆栈图"
+    }
+}

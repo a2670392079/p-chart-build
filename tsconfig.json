@@ -8,5 +8,6 @@
     "jsx": "react-jsx",
     "moduleResolution": "node"
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts"],
+  "include": ["src/types.ts"]
 }
