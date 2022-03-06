@@ -6,7 +6,9 @@
     "target": "es5",
     "allowJs": true,
     "jsx": "react-jsx",
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "resolveJsonModule": true,  
+    "downlevelIteration": true      
   },
   "files": ["src/index.ts"],
   "include": ["src/types.ts"]

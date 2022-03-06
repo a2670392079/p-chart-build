@@ -1,9 +1,12 @@
 import { SVGConfig, appendSVG, getRandomColor } from "../utils/SVGUtils";
+import GraphicData from './data/data';
 
 type SVGInfo = Omit<SVGConfig, "id">;
 export class Graphic {
   svgInfo: SVGInfo;
   private id: string;
+
+  public data?: GraphicData
   constructor({ id, ...rest }: SVGConfig, getContainer: () => HTMLElement) {
     this.id = id;
     this.svgInfo = {

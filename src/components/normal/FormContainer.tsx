@@ -6,6 +6,7 @@ import CreateSVGDialog from "./form-components/CreateSVGDialog";
 import "./style.css";
 import GraphicPanel from "./base-components/GraphicPanel";
 import Slide from "../normal/base-components/Slide";
+import GrapgicForm from "../normal/form-components/GraphicForm/GraphicForm";
 
 interface FormContainerProps {
   addSVG: () => HTMLDivElement;
@@ -15,26 +16,26 @@ const FormContainer: React.FC<FormContainerProps> = (props) => {
   const { addSVG } = props;
   const graphicRef = useRef<Array<Graphic>>([]);
   const [data, setData] = useState([]);
-  const [slideShow, setSlideShow] = useState(false);
+  const [slideShow, setSlideShow] = useState("");
 
   const renderItem = useCallback((item: any) => {
     return <GraphicPanel {...item} />;
   }, []);
 
   const editGraphic = useCallback((id: string) => {
-    setSlideShow(true);
+    setSlideShow(id);
   }, []);
 
   const closeSlide = useCallback(() => {
-    setSlideShow(false);
-  },[])
+    setSlideShow("");
+  }, []);
 
   const deleteGraphic = useCallback((id: string) => {
     graphicRef.current = graphicRef.current.filter(
       (graphic) => graphic.uniKey !== id
     );
 
-    document.getElementById(id)?.remove()
+    document.getElementById(id)?.remove();
     setData((pre) => {
       return [...pre.filter((info) => info.id !== id)];
     });
@@ -50,7 +51,7 @@ const FormContainer: React.FC<FormContainerProps> = (props) => {
             color: graphic.svgInfo.styles.borderColor,
           },
           onClick: editGraphic,
-          onDelete: deleteGraphic
+          onDelete: deleteGraphic,
         });
         return [...pre];
       });
@@ -60,7 +61,9 @@ const FormContainer: React.FC<FormContainerProps> = (props) => {
     <div className=" overflow-auto mx-12 pt-12 min-h-screen form-contianer">
       <CreateSVGDialog onOk={handleOk} />
       <List data={data} renderItem={renderItem} uniKey="id" />
-      <Slide title="Edit graphic" show={slideShow} onClose={closeSlide} >test</Slide>
+      <Slide title="Edit graphic" show={!!slideShow} onClose={closeSlide}>
+        <GrapgicForm graphicRef={graphicRef} id={slideShow} />
+      </Slide>
     </div>
   );
 };
